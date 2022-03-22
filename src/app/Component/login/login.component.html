@@ -1,0 +1,36 @@
+<!-- <div class="bg-img">
+    <form class="container">
+        <h1>Login</h1>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <button type="submit" class="btn">Login</button>
+    </form>
+</div> -->
+<div>
+    <section>
+        <div class="l-img">
+            <img  src="../../../assets/bk1.jpg">
+        </div>
+        <div class="l-content">
+            <form [formGroup]="loginForm" class="l-form" (ngSubmit)="login()">
+                <h2>Login</h2>
+                    <div class="l-input">
+                        <span>Email</span>
+                        <input type="text" name="" formControlName="email">
+                    </div>
+                    <div class="l-input">
+                        <span>Password</span>
+                        <input type="password" name="" formControlName="password">
+                    </div>
+                    <div class="l-input">
+                        <input type="submit" value="Login" name="">
+                    </div>
+        </form>
+        </div>
+    </section>
+</div>
