@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/Service/employee.service';
 
 @Component({
@@ -10,12 +11,12 @@ import { EmployeeService } from 'src/app/Service/employee.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = true;
-  constructor(private formBuilder: FormBuilder, private emp:EmployeeService) { }
+  constructor(private formBuilder: FormBuilder, private emp:EmployeeService, private router:Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]],  
+      password: ['', [Validators.required]],  
   });
   }
 
@@ -31,6 +32,10 @@ export class LoginComponent implements OnInit {
      this.emp.login(login).subscribe((response:any)=>{
       localStorage.setItem('token',response.data.UserDetails.token)
        console.log(response);
+       if(response.message == "Successfully logged in")
+      {
+        this.router.navigateByUrl('/dashboard')
+      }
      })
     }
     else
@@ -38,5 +43,4 @@ export class LoginComponent implements OnInit {
       console.log("invalid");
     }
   }
-
 }
