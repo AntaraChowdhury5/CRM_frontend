@@ -1,20 +1,20 @@
 <h1 mat-dialog-title>Update Employee From</h1>
 <div mat-dialog-content>
-    <form [formGroup]="employeeFrom">
+    <form [formGroup]="form" >
         <mat-form-field appearance="outline">
             <mat-label>Employee Name</mat-label>
-            <input matInput placeholder="Enter the employee name" name="name" [(ngModel)]="name">
+            <input matInput formControlName="name" name="name" [(ngModel)]="name">
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input formControlName="email" matInput placeholder="Enter the employee Email">
+            <input  matInput formControlName="email"name="email" [(ngModel)]="email">
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Department</mat-label>
-            <input formControlName="department"matInput placeholder="Enter the department">
+            <input matInput formControlName="department" name="department" [(ngModel)]="department">
           </mat-form-field>
           <label for=""><h1>Choose the Role</h1></label>
-          <mat-radio-group formControlName="role"class="example-radio-group">
+          <mat-radio-group class="example-radio-group" formControlName="role" name="role" [(ngModel)]="role">
               <mat-radio-button class="example-radio-button" *ngFor="let role of roleList" [value]="role">
                   {{role}}
               </mat-radio-button>

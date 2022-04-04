@@ -1,0 +1,6 @@
+projectKey=EmployeeFrontend
+serverUrl=http://localhost:9050
+serverVersion=9.3.0.51899
+dashboardUrl=http://localhost:9050/dashboard?id=EmployeeFrontend
+ceTaskId=AX_zHLay0NPVbX0atF3T
+ceTaskUrl=http://localhost:9050/api/ce/task?id=AX_zHLay0NPVbX0atF3T

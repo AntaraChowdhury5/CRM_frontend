@@ -36,7 +36,9 @@ export class EmployeeService {
     return this.httpService.postService('/emps/',reqdata,true,header)
   }
 
-  updateEmp(reqData:any){
+  updateEmployee(id:any,reqData:any){
+    console.log(reqData);
+    
     this.token=localStorage.getItem('token')
     let header = {
       headers:new HttpHeaders({
@@ -44,7 +46,7 @@ export class EmployeeService {
         'token':this.token
       })
     }
-    return this.httpService.putService('/emps/'+reqData._id,reqData,true,header)
+    return this.httpService.putService('/emps/'+id,reqData,true,header)
   }
 
   deleteEmp(reqdata:any){
