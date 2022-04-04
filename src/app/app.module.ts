@@ -19,15 +19,23 @@ import {MatSortModule} from '@angular/material/sort';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Component/login/login.component';
-import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddEmpComponent } from './Component/add-emp/add-emp.component';
+import { UpdateEmpComponent } from './Component/update-emp/update-emp.component';
+import { EmployeeComponent } from './Component/employee/employee.component';
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import { DepartmentComponent } from './Component/department/department.component';
+import { RoleComponent } from './Component/role/role.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    AddEmpComponent,
+    UpdateEmpComponent,
     DashboardComponent,
-    AddEmpComponent
+    EmployeeComponent,
+    DepartmentComponent,
+    RoleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>Add Employee From</h1>
+<h1 mat-dialog-title>Update Employee From</h1>
 <div mat-dialog-content>
     <form [formGroup]="employeeFrom">
         <mat-form-field appearance="outline">
             <mat-label>Employee Name</mat-label>
-            <input formControlName="name" matInput placeholder="Enter the employee name">
+            <input matInput placeholder="Enter the employee name" name="name" [(ngModel)]="name">
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
@@ -23,5 +23,5 @@
 </div>
 <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button ml-3  style="background-color: #03a9f4;" mat-raised-button (click)="addEmployee()">{{actionBtn}}</button>
+    <button ml-3  style="background-color: #03a9f4;" mat-raised-button (click)="updateEmployee()">Update</button>
 </div>

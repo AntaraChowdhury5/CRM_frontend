@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
      this.emp.login(login).subscribe((response:any)=>{
       localStorage.setItem('token',response.data.UserDetails.token)
        console.log(response);
-       if(response.message == "Successfully logged in")
+       if(response.message == "Login succesfully")
       {
         this.router.navigateByUrl('/dashboard')
       }

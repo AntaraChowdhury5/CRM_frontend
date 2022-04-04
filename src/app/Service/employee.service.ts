@@ -14,7 +14,7 @@ export class EmployeeService {
         'Content-type':'application/json',
       })
     }
-    return this.httpService.postService('/users/login',reqdata,false,header)
+    return this.httpService.postService('/emps/login',reqdata,false,header)
   }
   getAllEmp(){
     this.token=localStorage.getItem('token')
@@ -23,7 +23,7 @@ export class EmployeeService {
         'token':this.token
       })
     }
-    return this.httpService.getService('/users/',true,header)
+    return this.httpService.getService('/emps/',true,header)
   }
   addEmployee(reqdata:any){
     this.token=localStorage.getItem('token')
@@ -33,6 +33,28 @@ export class EmployeeService {
         'token':this.token
       })
     }
-    return this.httpService.postService('/users/',reqdata,true,header)
+    return this.httpService.postService('/emps/',reqdata,true,header)
+  }
+
+  updateEmp(reqData:any){
+    this.token=localStorage.getItem('token')
+    let header = {
+      headers:new HttpHeaders({
+        'Content-type':'application/json',
+        'token':this.token
+      })
+    }
+    return this.httpService.putService('/emps/'+reqData._id,reqData,true,header)
+  }
+
+  deleteEmp(reqdata:any){
+    this.token=localStorage.getItem('token')
+    console.log(reqdata);
+    let header={
+      headers: new HttpHeaders({
+        'token':this.token
+      })
+    }
+    return this.httpService.deleteService('/emps/'+reqdata.id,true,header)
   }
 }

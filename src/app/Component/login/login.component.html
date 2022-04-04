@@ -1,42 +1,26 @@
 <div>
     <section>
         <div class="l-img">
-            <img  src="../../../assets/bk1.jpg">
+            <img src="../../../assets/bk1.jpg">
         </div>
         <div class="l-content">
             <form [formGroup]="loginForm" class="l-form" (ngSubmit)="login()">
                 <h2>Login</h2>
                 <div class="l-input">
-                    
-                        <mat-label>E-mail</mat-label>
-                        <input type="text" formControlName="email" placeholder="E-mail">
-                        
-                    
-                    </div>
-                    <div class="l-input">
-                        
-                            <mat-label>Password</mat-label>
-                            <input type="password" formControlName="password" placeholder="Password">
-                            
-                       
-                    </div>
-    
+                    <mat-label>E-mail</mat-label>
+                    <input type="text" formControlName="email" placeholder="E-mail">
+                </div>
+
+                <div class="l-input">
+                    <mat-label>Password</mat-label>
+                    <input type="password" formControlName="password" placeholder="Password">
+                </div>
+
                 <div class="l-input" fxLayout="row" fxLayoutAlign="space-between center">
                     <button class="l-sub">Submit</button>
                 </div>
-                
-                    <!-- <div class="l-input">
-                        <span>Email</span>
-                        <input type="text" name="" formControlName="email">
-                    </div>
-                    <div class="l-input">
-                        <span>Password</span>
-                        <input type="password" name="" formControlName="password">
-                    </div>
-                    <div class="l-input">
-                        <input type="submit" routerLink="/dashboard" value="Login" name="">
-                    </div> -->
-        </form>
+
+            </form>
         </div>
     </section>
 </div>
