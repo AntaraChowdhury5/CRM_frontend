@@ -1,5 +1,4 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
 import { AddEmpComponent } from 'src/app/Component/add-emp/add-emp.component';
@@ -7,8 +6,6 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { EmployeeService } from 'src/app/Service/employee.service';
 import { UpdateEmpComponent } from '../update-emp/update-emp.component';
-//import { UpdateEmpComponent } from '../update-emp/update-emp.component';
-
 
 @Component({
   selector: 'app-employee',
@@ -22,9 +19,8 @@ export class EmployeeComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   emplist:any;
-  name: any;
-
-  constructor(private dialog:MatDialog,private route:Router,private emp:EmployeeService) { }
+ 
+  constructor(private dialog:MatDialog,private emp:EmployeeService) { }
   ngOnInit(): void {
     this.getAllEmp();
   }
@@ -51,7 +47,6 @@ export class EmployeeComponent implements OnInit {
       width:'30%'
     });
   }
-
   updateEmployee(row:any):void{
     console.log(row);
     this.dialog.open(UpdateEmpComponent,{
@@ -67,14 +62,6 @@ export class EmployeeComponent implements OnInit {
      this.emp.deleteEmp(data).subscribe((response:any)=>{
       console.log(response)
     }) 
-  }
-  
-  refreshButton() {
-    window.location.reload();
-  }
-  logout(){
-    localStorage.removeItem('token');
-    this.route.navigateByUrl('/login')
   }
 
 }

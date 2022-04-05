@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { DepartmentService } from 'src/app/Service/department.service';
 
 @Component({
   selector: 'app-department',
@@ -7,9 +12,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartmentComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['dept_id','dept_name','action'];
+  dataSource!: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  deptlist:any;
+
+  constructor(private dialog:MatDialog,private dept:DepartmentService) { }
 
   ngOnInit(): void {
+    this.getAllDept();
+  }
+
+  public getAllDept(){
+    this.dept.getAllDept().subscribe((response:any)=>{
+      console.log(response.data);
+      this.dataSource=new MatTableDataSource(response.data);
+      this.dataSource.paginator=this.paginator;
+      this.dataSource.sort=this.sort;
+    this.deptlist=response.data;
+    })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }

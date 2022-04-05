@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   isMenuOpen=true;
   contentMargin=240;
 
-  constructor(private route:Router,private dialog:MatDialog,) { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -26,12 +26,6 @@ export class DashboardComponent implements OnInit {
     else{
       this.contentMargin=20;
     }
-  }
-
-  openDialog() {
-    this.dialog.open(AddEmpComponent, {
-      width:'30%'
-    });
   }
 
   refreshButton() {
