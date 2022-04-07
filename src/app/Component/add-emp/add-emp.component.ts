@@ -10,7 +10,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./add-emp.component.scss']
 })
 export class AddEmpComponent implements OnInit {
-roleList=["Business Manager","Project Manager","Project Leads","Developers","QA","Senior QA","Account Manager"];
+roleList=["Manager","Developer","Team Leader","QA","Senior QA"];
 employeeFrom!: FormGroup;
 submitted = false;
 actionBtn :string ="Save"
@@ -21,8 +21,8 @@ actionBtn :string ="Save"
     this.employeeFrom=this.fromBuider.group({
       name:['', Validators.required],
       email:['', Validators.required],
-      department:['', Validators.required],
-      role:['', Validators.required],
+      department:{dept_name:['', Validators.required]},
+      role:{role_name:['', Validators.required]},
     });
     console.log(this.editData);
     if(this.editData){
@@ -38,8 +38,8 @@ actionBtn :string ="Save"
         let reqData={
          name:this.employeeFrom.value.name,
          email:this.employeeFrom.value.email,
-         department:this.employeeFrom.value.department,
-         role:this.employeeFrom.value.role
+         department:{dept_name:this.employeeFrom.value.department},
+         role:{role_name:this.employeeFrom.value.role}
       }
        this.emp.addEmployee(reqData).subscribe((response:any)=>{
          console.log(response)
