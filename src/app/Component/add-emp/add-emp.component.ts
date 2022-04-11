@@ -20,10 +20,11 @@ public actionBtn :string ="Save"
     this.employeeForm=this.fromBuider.group({
       name:['', Validators.required],
       email:['', Validators.required],
+      password:['',Validators.required],
       department:{dept_name:['', Validators.required]},
       role:{role_name:['', Validators.required]},
     });
-    console.log(this.editData);
+    
     if(this.editData){
       this.actionBtn="Update"
     }
@@ -36,6 +37,7 @@ public actionBtn :string ="Save"
         let reqData={
          name:this.employeeForm.value.name,
          email:this.employeeForm.value.email,
+         password:this.employeeForm.value.password,
          department:{dept_name:this.employeeForm.value.department},
          role:{role_name:this.employeeForm.value.role}
       }

@@ -17,5 +17,9 @@ export class AdminPopUpComponent implements OnInit {
     this.router.navigateByUrl('/dashboard');
     this.dialogref.close();
   }
+  update(){
+    this.router.navigateByUrl('/profile');
+    this.dialogref.close();
+  }
 
 }

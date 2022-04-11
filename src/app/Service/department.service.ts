@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpService } from './http.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,10 @@ import { HttpService } from './http.service';
 export class DepartmentService {
   token:any;
 
-  constructor(private httpService:HttpService) { }
+  constructor(private httpService:HttpService, private localStorageService:LocalStorageService) { }
 
   getAllDept(){
-    this.token=localStorage.getItem('token')
+    this.token = this.localStorageService.getItem('token');
     let header={
       headers:new HttpHeaders({
         'token':this.token
@@ -20,7 +21,7 @@ export class DepartmentService {
     return this.httpService.getService('/dept/',true,header)
   }
   addDept(reqdata:any){
-    this.token=localStorage.getItem('token')
+    this.token = this.localStorageService.getItem('token');
     let header = {
       headers:new HttpHeaders({
         'Content-type':'application/json',
@@ -31,9 +32,7 @@ export class DepartmentService {
   }
 
   updateDept(id:any,reqData:any){
-    console.log(reqData);
-    
-    this.token=localStorage.getItem('token')
+    this.token = this.localStorageService.getItem('token');
     let header = {
       headers:new HttpHeaders({
         'Content-type':'application/json',
@@ -44,7 +43,7 @@ export class DepartmentService {
   }
 
   deleteDept(reqdata:any){
-    this.token=localStorage.getItem('token')
+    this.token = this.localStorageService.getItem('token');
     console.log(reqdata);
     let header={
       headers: new HttpHeaders({

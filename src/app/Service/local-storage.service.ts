@@ -7,12 +7,12 @@ export class LocalStorageService {
 
   constructor() { }
 
-  public setItem(key: string, value:string): void {
-    localStorage.setItem(key,value);
+  public setItem(token: string, value:string): void {
+    localStorage.setItem(token,value);
   }
   
-  public getItem(key: string): string {
-    return JSON.parse(localStorage.getItem(key)|| '{}');
+  public getItem(token: string): string {
+    return (localStorage.getItem(token)|| '{}');
   }
 
   public removeItem(key: string): void {
@@ -23,12 +23,3 @@ export class LocalStorageService {
     localStorage.clear();
   }
 }
-
-
-/* localStorage.setItem('token', response.data.UserDetails.token);
-this.token=localStorage.getItem('token')
-    this.token = this.localStorageService.getItem(this.formGroup.get('storageKey').value);
-
-    this.formGroup.get('storageKey').value,
-  this.formGroup.get('storageData').value
- */

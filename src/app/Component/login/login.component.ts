@@ -37,11 +37,7 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.value.password,
       }
       this.emp.login(login).subscribe((response: any) => {
-        this.localStorageService.setItem('token',response.data.UserDetails.token
-          /* this.formGroup.get('storageKey').value,
-          this.formGroup.get('storageData').value */
-        ); 
-        //localStorage.setItem('token', response.data.UserDetails.token);
+        this.localStorageService.setItem('token',response.data.UserDetails.token); 
         this.data.sendData(response);
       })
     }

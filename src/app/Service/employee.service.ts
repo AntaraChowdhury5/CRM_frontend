@@ -28,7 +28,7 @@ export class EmployeeService {
     return this.httpService.getService('/emps/',true,header)
   }
   getEmp(reqData:any){
-    this.token=localStorage.getItem('token')
+    this.token = this.localStorageService.getItem('token');
     let header={
       headers:new HttpHeaders({
         'token':this.token
@@ -38,7 +38,7 @@ export class EmployeeService {
   }
   
   addEmployee(reqdata:any){
-    this.token=localStorage.getItem('token')
+    this.token = this.localStorageService.getItem('token');
     let header = {
       headers:new HttpHeaders({
         'Content-type':'application/json',
@@ -50,8 +50,7 @@ export class EmployeeService {
 
   updateEmployee(id:any,reqData:any){
     console.log(reqData);
-    
-    this.token=localStorage.getItem('token')
+    this.token = this.localStorageService.getItem('token');
     let header = {
       headers:new HttpHeaders({
         'Content-type':'application/json',
@@ -62,13 +61,13 @@ export class EmployeeService {
   }
 
   deleteEmp(reqdata:any){
-    this.token=localStorage.getItem('token')
+    this.token = this.localStorageService.getItem('token');
     console.log(reqdata);
     let header={
       headers: new HttpHeaders({
         'token':this.token
       })
     }
-    return this.httpService.deleteService('/emps/'+reqdata.id,true,header)
+    return this.httpService.putService('/emps/delete/'+reqdata.id,reqdata,true,header)
   }
 }
