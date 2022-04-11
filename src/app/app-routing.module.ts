@@ -5,9 +5,11 @@ import { LoginComponent } from './Component/login/login.component';
 import { EmployeeComponent } from './Component/employee/employee.component';
 import { DepartmentComponent } from './Component/department/department.component';
 import { RoleComponent } from './Component/role/role.component';
+import { PopUpComponent } from './Component/pop-up/pop-up.component';
 
 const routes: Routes = [
   {path: "login", component: LoginComponent},
+  {path: "popup", component:PopUpComponent},
   {path:"dashboard",component:DashboardComponent,
   children:[
     {path:"employee",component:EmployeeComponent},

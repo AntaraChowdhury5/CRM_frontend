@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AddEmpComponent } from '../add-emp/add-emp.component';
+import { LocalStorageService } from 'src/app/Service/local-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +9,14 @@ import { AddEmpComponent } from '../add-emp/add-emp.component';
 })
 export class DashboardComponent implements OnInit {
 
-  isMenuOpen=true;
-  contentMargin=240;
+  public isMenuOpen=true;
+  private contentMargin=240;
 
-  constructor(private route:Router) { }
+  constructor(private route:Router, private localStorage:LocalStorageService) { }
 
   ngOnInit(): void {
   }
-  onToolbarMenuToggle(){
+  public onToolbarMenuToggle(){
     this.isMenuOpen = !this.isMenuOpen;
     if(!this.isMenuOpen)
     {
@@ -28,11 +27,11 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  refreshButton() {
+  public refresh() {
     window.location.reload();
   }
-  logout(){
-    localStorage.removeItem('token');
+  public logout(){
+    this.localStorage.removeItem('token');
     this.route.navigateByUrl('/login')
   }
 }

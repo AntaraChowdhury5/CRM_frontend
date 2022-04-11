@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-//import {HttpClientModule} from '@angular/common/http';
+
 
 
 import { EmployeeComponent } from './employee.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('EmployeeComponent', () => {
   let component: EmployeeComponent;
@@ -12,7 +13,7 @@ describe('EmployeeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EmployeeComponent ],
-      imports: [HttpClientTestingModule], 
+      imports: [HttpClientTestingModule,MatDialogModule], 
     })
     .compileComponents();
   });

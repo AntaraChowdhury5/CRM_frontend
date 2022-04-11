@@ -18,9 +18,9 @@ export class DepartmentComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  deptlist:any;
+  public deptlist:any;
 
-  constructor(private dialog:MatDialog,private dept:DepartmentService) { }
+  constructor(private dept:DepartmentService) { }
 
   ngOnInit(): void {
     this.getAllDept();
@@ -36,7 +36,7 @@ export class DepartmentComponent implements OnInit {
     })
   }
 
-  applyFilter(event: Event) {
+ public  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpService } from './http.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
   token:any;
-  constructor(private httpService:HttpService) { }
+  constructor(private httpService:HttpService, private localStorageService:LocalStorageService) { }
   login(reqdata:any){
     let header={
       headers:new HttpHeaders({
@@ -17,7 +18,8 @@ export class EmployeeService {
     return this.httpService.postService('/emps/login',reqdata,false,header)
   }
   getAllEmp(){
-    this.token=localStorage.getItem('token')
+    this.token = this.localStorageService.getItem('token');
+    //this.token=localStorage.getItem('token')
     let header={
       headers:new HttpHeaders({
         'token':this.token
@@ -25,6 +27,16 @@ export class EmployeeService {
     }
     return this.httpService.getService('/emps/',true,header)
   }
+  getEmp(reqData:any){
+    this.token=localStorage.getItem('token')
+    let header={
+      headers:new HttpHeaders({
+        'token':this.token
+      })
+    }
+    return this.httpService.getService('/emps/'+reqData.id,true,header)
+  }
+  
   addEmployee(reqdata:any){
     this.token=localStorage.getItem('token')
     let header = {

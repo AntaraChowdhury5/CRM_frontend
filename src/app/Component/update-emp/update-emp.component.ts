@@ -11,14 +11,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./update-emp.component.scss']
 })
 export class UpdateEmpComponent implements OnInit {
-  name: any;
-  email: any;
-  department: any;
-  role: any;
-  form!: FormGroup;
+  public name: any;
+  public email: any;
+  public department: any;
+  public role: any;
+  public form!: FormGroup;
+  public roleList = ["Manager","Developer","Team Leader","QA","Senior QA"];
 
-  roleList = ["Manager","Developer","Team Leader","QA","Senior QA"];
-  submitted = false;
   constructor( private emp: EmployeeService, 
     private snackbar: MatSnackBar,
     public dialogRef: MatDialogRef<UpdateEmpComponent>,
@@ -36,16 +35,13 @@ export class UpdateEmpComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       department:{dept_name:['', Validators.required]},
-      
-    role:{role_name:['', Validators.required]},
-
+      role:{role_name:['', Validators.required]},
     });
   }
 
-  updateEmployee() {
-    this.submitted = true;
+  public updateEmployee() {
     let data={
-      name:this.form.value.name,
+         name:this.form.value.name,
          email:this.form.value.email,
          department:{dept_name:this.form.value.department},
          role:{role_name:this.form.value.role}

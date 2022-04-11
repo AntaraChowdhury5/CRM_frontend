@@ -18,7 +18,7 @@ export class EmployeeComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  emplist:any;
+  public emplist:any;
  
   constructor(private dialog:MatDialog,private emp:EmployeeService) { }
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class EmployeeComponent implements OnInit {
     })
   }
 
-  applyFilter(event: Event) {
+  public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -42,12 +42,12 @@ export class EmployeeComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  openDialog() {
+  public openDialog() {
     this.dialog.open(AddEmpComponent, {
       width:'30%'
     });
   }
-  updateEmployee(row:any):void{
+  public updateEmployee(row:any):void{
     console.log(row);
     this.dialog.open(UpdateEmpComponent,{
       width:'30%',
@@ -55,7 +55,7 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
-  deleteEmployee(row:any){
+  public deleteEmployee(row:any){
     let data={
     id:row._id
     }

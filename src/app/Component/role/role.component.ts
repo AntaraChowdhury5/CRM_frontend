@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatDialog } from '@angular/material/dialog';
 import { RoleService } from 'src/app/Service/role.service';
 
 @Component({
@@ -11,8 +10,8 @@ import { RoleService } from 'src/app/Service/role.service';
   styleUrls: ['./role.component.scss']
 })
 export class RoleComponent implements OnInit {
-  displayedColumns: string[] = ['role_id','role_name','action'];
-  dataSource!: MatTableDataSource<any>;
+  public displayedColumns: string[] = ['role_id','role_name','action'];
+  public dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -34,7 +33,7 @@ export class RoleComponent implements OnInit {
     })
   }
 
-  applyFilter(event: Event) {
+  public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 

@@ -10,15 +10,14 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./add-emp.component.scss']
 })
 export class AddEmpComponent implements OnInit {
-roleList=["Manager","Developer","Team Leader","QA","Senior QA"];
-employeeFrom!: FormGroup;
-submitted = false;
-actionBtn :string ="Save"
+public roleList=["Manager","Developer","Team Leader","QA","Senior QA"];
+public employeeForm!: FormGroup;
+public actionBtn :string ="Save"
   constructor(private fromBuider:FormBuilder, private emp:EmployeeService,private dialogref:MatDialogRef<AddEmpComponent>,
     @Inject(MAT_DIALOG_DATA) private editData:any, private snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
-    this.employeeFrom=this.fromBuider.group({
+    this.employeeForm=this.fromBuider.group({
       name:['', Validators.required],
       email:['', Validators.required],
       department:{dept_name:['', Validators.required]},
@@ -30,16 +29,15 @@ actionBtn :string ="Save"
     }
     
   }
-  addEmployee(){
-    this.submitted=true;
-      if(this.employeeFrom.valid)
+  public addEmployee(){
+      if(this.employeeForm.valid)
       {
-        console.log(this.employeeFrom.value);
+        console.log(this.employeeForm.value);
         let reqData={
-         name:this.employeeFrom.value.name,
-         email:this.employeeFrom.value.email,
-         department:{dept_name:this.employeeFrom.value.department},
-         role:{role_name:this.employeeFrom.value.role}
+         name:this.employeeForm.value.name,
+         email:this.employeeForm.value.email,
+         department:{dept_name:this.employeeForm.value.department},
+         role:{role_name:this.employeeForm.value.role}
       }
        this.emp.addEmployee(reqData).subscribe((response:any)=>{
          console.log(response)

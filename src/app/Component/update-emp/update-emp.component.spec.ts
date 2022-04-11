@@ -1,4 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+	MatDialogModule,
+	MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 
 import { UpdateEmpComponent } from './update-emp.component';
 
@@ -8,7 +15,8 @@ describe('UpdateEmpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UpdateEmpComponent ]
+      declarations: [ UpdateEmpComponent ],
+      imports: [HttpClientTestingModule,HttpClientTestingModule,MatSnackBarModule,MatDialogRef,MatDialogModule,MatDialog],
     })
     .compileComponents();
   });

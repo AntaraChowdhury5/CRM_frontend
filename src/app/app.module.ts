@@ -16,6 +16,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,9 @@ import { EmployeeComponent } from './Component/employee/employee.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { DepartmentComponent } from './Component/department/department.component';
 import { RoleComponent } from './Component/role/role.component';
+import { PopUpComponent } from './Component/pop-up/pop-up.component';
+import { AdminPopUpComponent } from './Component/admin-pop-up/admin-pop-up.component';
+import { ProfileComponent } from './Component/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +40,10 @@ import { RoleComponent } from './Component/role/role.component';
     DashboardComponent,
     EmployeeComponent,
     DepartmentComponent,
-    RoleComponent
+    RoleComponent,
+    PopUpComponent,
+    AdminPopUpComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +64,8 @@ import { RoleComponent } from './Component/role/role.component';
     MatSnackBarModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
