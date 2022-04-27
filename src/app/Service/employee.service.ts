@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { LocalStorageService } from './local-storage.service';
+import { Employee } from '../DTO/employee';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-  token:any;
-  constructor(private httpService:HttpService, private localStorageService:LocalStorageService) { }
+  token?:string;
+  constructor(private httpService:HttpService, private localStorageService:LocalStorageService,private http: HttpClient) { }
+
+  baseURL = 'http://localhost:3000/api/v1';
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+
   login(reqdata:any){
     let header={
       headers:new HttpHeaders({
@@ -19,7 +25,6 @@ export class EmployeeService {
   }
   getAllEmp(){
     this.token = this.localStorageService.getItem('token');
-    //this.token=localStorage.getItem('token')
     let header={
       headers:new HttpHeaders({
         'token':this.token
@@ -27,29 +32,37 @@ export class EmployeeService {
     }
     return this.httpService.getService('/emps/',true,header)
   }
-  getEmp(reqData:any){
+  getEmp(reqData:string){
     this.token = this.localStorageService.getItem('token');
     let header={
       headers:new HttpHeaders({
         'token':this.token
       })
     }
-    return this.httpService.getService('/emps/'+reqData.id,true,header)
+    return this.httpService.getService('/emps/'+reqData,true,header)
   }
   
-  addEmployee(reqdata:any){
+  addUser(empData:Employee){
     this.token = this.localStorageService.getItem('token');
     let header = {
       headers:new HttpHeaders({
-        'Content-type':'application/json',
         'token':this.token
       })
     }
-    return this.httpService.postService('/emps/',reqdata,true,header)
+    var formData: any = new FormData();
+    formData.append('name', empData.name);
+    formData.append('email',empData.email);
+    formData.append('password',empData.password);
+    formData.append('address',empData.address);
+    formData.append('mobile',empData.mobile);
+    formData.append('department[dept_name]',empData.department?.dept_name);
+    formData.append('role[role_name]',empData.role?.role_name);
+    formData.append('image', empData.image);
+
+    return this.httpService.postService('/emps/',formData,true,header)  
   }
 
-  updateEmployee(id:any,reqData:any){
-    console.log(reqData);
+  updateEmployee(id:string,reqData:any){
     this.token = this.localStorageService.getItem('token');
     let header = {
       headers:new HttpHeaders({
@@ -62,7 +75,6 @@ export class EmployeeService {
 
   deleteEmp(reqdata:any){
     this.token = this.localStorageService.getItem('token');
-    console.log(reqdata);
     let header={
       headers: new HttpHeaders({
         'token':this.token

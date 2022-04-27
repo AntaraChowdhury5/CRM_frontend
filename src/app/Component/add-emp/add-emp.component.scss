@@ -1,7 +1,9 @@
 mat-form-field{
     width: 100%;
 }
-
+.file-input {
+  display: none;
+}
 .example-radio-group {
     display: flex;
     flex-direction: column;

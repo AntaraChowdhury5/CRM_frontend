@@ -16,11 +16,9 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
 export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
   private submitted = true;
-  res:any;
-  
 
   constructor(private formBuilder: FormBuilder, private emp: EmployeeService, private router: Router,
-    private dialog: MatDialog, private data: DataService, private localStorageService:LocalStorageService) { }
+    private dialog: MatDialog, private data: DataService, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -37,8 +35,24 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.value.password,
       }
       this.emp.login(login).subscribe((response: any) => {
-        this.localStorageService.setItem('token',response.data.UserDetails.token); 
+        this.localStorageService.setItem('token', response.data.UserDetails.token);
         this.data.sendData(response);
+        console.log(response);
+
+        if (response.data.UserDetails.role == 'Admin') {
+          console.log("admin");
+
+          this.dialog.open(AdminPopUpComponent, {
+            width: '30%'
+          });
+        }
+        else {
+          console.log("user");
+
+          this.dialog.open(PopUpComponent, {
+            width: '30%'
+          });
+        }
       })
     }
     else {
@@ -46,26 +60,5 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  public openDialog() {
-    this.data.recievedData.subscribe((res: any) => {
-      //if (res.message == 'Login succesfully') {
-        console.log(res);
-        if (res.data.UserDetails.role.role_name == 'Admin') {
-          this.dialog.open(AdminPopUpComponent, {
-            width: '30%'
-          });
-
-        }
-      
-        else {
-          this.dialog.open(PopUpComponent, {
-            width: '30%'
-          });
-        }
-      
-    }
-
-    )
-  }
 
 }

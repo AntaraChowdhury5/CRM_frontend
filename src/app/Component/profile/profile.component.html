@@ -1,0 +1,17 @@
+<div class="my-profile-whole-container">
+    <div class="my-profile-headerContent">Profile of {{name}}</div>
+    <div class="my-profile-display-contact">
+        <div class="my-profile-contact-container" >
+            <div class="my-profile-name" >Name<span>:{{name}}  </span></div>
+            <div class="my-profile-emailId">EmailId<span>:{{email}}</span></div>
+            <div class="my-profile-dept">Department<span>:{{dept}}</span></div>
+            <div class="my-profile-role">Role<span>:{{role}}</span></div>
+            <div class="my-profile-add">Address<span>:{{address}}</span></div>
+            <div class="my-profile-ph">Mobile No<span>:{{mobile}}</span></div>
+            <div class="profile-button" fxLayoutGap="10px">
+            <button class="b-1" mat-raised-button  routerLink="/login">Back</button>
+            <button class="b-2" mat-raised-button (click)="updateEmployee()">Update</button>
+        </div>
+        </div>
+    </div>
+</div>

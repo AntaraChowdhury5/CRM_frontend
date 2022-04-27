@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Employee } from '../DTO/employee';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
   baseUrl = environment.baseURL
   constructor(private httpClient: HttpClient) { }
-  postService(url: string, reqdata: any, token: boolean = true, httpOption: any) {
+
+  postService(url: string, reqdata: Employee, token: boolean = true, httpOption: any) {
     return this.httpClient.post(this.baseUrl + url, reqdata, token && httpOption)
   }
   putService(url: string, reqdata: any, token: boolean = true, httpOption: any) {

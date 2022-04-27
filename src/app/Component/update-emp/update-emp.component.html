@@ -17,8 +17,8 @@
               <mat-option value="Software Engineer">Software Engineer</mat-option>
               <mat-option value="Testing">Testing</mat-option>
             </mat-select>
-          </mat-form-field>
-          <label for=""><h1>Choose the Role</h1></label>
+          </mat-form-field><br>
+          <mat-label for="">Choose the Role</mat-label><br>
           <mat-radio-group class="example-radio-group" formControlName="role" name="role.role_name" [(ngModel)]="role.role_name">
               <mat-radio-button class="example-radio-button" *ngFor="let role of roleList" [value]="role">
                   {{role}}

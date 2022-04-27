@@ -2,6 +2,6 @@
     <p>want to Update your profile OR Add?</p>
   </div>
 <div mat-dialog-actions>
-    <button mat-button (click)="update()">Update</button>
-    <button mat-button [mat-dialog-close] cdkFocusInitial (click)="add()">Add</button>
+    <button mat-button [mat-dialog-close] (click)="update()">Update</button>
+    <button mat-button cdkFocusInitial (click)="add()" routerLink="/dashboard/employee">Add</button>
 </div>

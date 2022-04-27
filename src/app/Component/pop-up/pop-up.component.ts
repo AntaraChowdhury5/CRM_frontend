@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/Service/data.service';
-import { EmployeeService } from 'src/app/Service/employee.service';
 
 @Component({
   selector: 'app-pop-up',
@@ -10,8 +10,13 @@ import { EmployeeService } from 'src/app/Service/employee.service';
 })
 export class PopUpComponent implements OnInit {
 ed:any;
-  constructor(private data: DataService,  private router:Router, private empService: EmployeeService) { }
+  constructor(private data: DataService,  private router:Router, private dialogref:MatDialogRef<PopUpComponent>) { }
 
   ngOnInit(): void {
+    
+  }
+  update(){
+    this.router.navigateByUrl('/profile');
+    this.dialogref.close();
   }
 }

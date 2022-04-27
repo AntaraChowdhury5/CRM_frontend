@@ -14,7 +14,7 @@ export class AdminPopUpComponent implements OnInit {
   ngOnInit(): void {
   }
   add(){
-    this.router.navigateByUrl('/dashboard');
+    this.router.navigateByUrl('dashboard/employee');
     this.dialogref.close();
   }
   update(){

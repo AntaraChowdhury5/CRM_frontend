@@ -1,36 +1,48 @@
 <h1 mat-dialog-title>Add Employee From</h1>
 <div mat-dialog-content>
-    <form [formGroup]="employeeForm">
-        <mat-form-field appearance="outline">
-            <mat-label>Employee Name</mat-label>
-            <input formControlName="name" matInput placeholder="Enter the employee name">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input formControlName="email" matInput placeholder="Enter the employee Email">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input formControlName="password" matInput placeholder="Password" >
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Department</mat-label>
-            <mat-select formControlName="department"matInput placeholder="Enter the department">
-              <mat-option value="Account">Account</mat-option>
-              <mat-option value="People Experience" >People Experience</mat-option>
-              <mat-option value="Software Engineer">Software Engineer</mat-option>
-              <mat-option value="Testing">Testing</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <label for=""><h1>Choose the Role</h1></label>
-          <mat-radio-group formControlName="role"class="example-radio-group">
-              <mat-radio-button class="example-radio-button" *ngFor="let role of roleList" [value]="role">
-                  {{role}}
-              </mat-radio-button>
-          </mat-radio-group>
-    </form>
+  <form>
+      <mat-label>Employee Name</mat-label>
+      <input name="name" [(ngModel)]="form.name" matInput placeholder="Enter the employee name">
+    <br>
+      <mat-label>Email</mat-label><br>
+      <input name="email" [(ngModel)]="form.email"placeholder="Enter the employee Email">
+    <br>
+      <mat-label>Password</mat-label>
+      <input type="password"name="password" [(ngModel)]="form.password"matInput placeholder="Password">
+    <br>
+    <mat-label>Mobile No</mat-label>
+      <input name="mobile" [(ngModel)]="form.mobile" matInput placeholder="Enter the employee mobile no.">
+    <br>
+    <mat-label>Address</mat-label>
+      <input name="address" [(ngModel)]="form.address" matInput placeholder="Enter the employee address">
+    <br>
+      <mat-label>Department</mat-label>
+      <mat-select name="department" [(ngModel)]="form.department" matInput placeholder="Enter the department">
+        <mat-option value="Account">Account</mat-option>
+        <mat-option value="PE">PE</mat-option>
+        <mat-option value="Engineer">Engineer</mat-option>
+        <mat-option value="Testing">Testing</mat-option>
+      </mat-select>
+    
+    <mat-label for="">
+      <h3>Choose the Role</h3>
+    </mat-label>
+    <mat-radio-group name="role" class="example-radio-group" [(ngModel)]="form.role">
+      <mat-radio-button class="example-radio-button" *ngFor="let role of roleList" [value]="role">
+        {{role}}
+      </mat-radio-button>
+    </mat-radio-group>
+   <div>
+      <span>Image:</span>
+      <span><input type="file" name="image" (change)="fileChoose($event)"></span>
+      <span *ngIf="choosen"></span>
+    </div>
+
+  </form>
+
+
 </div>
 <div mat-dialog-actions [align]="'end'">
-    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button ml-3  style="background-color: #03a9f4;" mat-raised-button (click)="addEmployee()">{{actionBtn}}</button>
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button ml-3 style="background-color: #03a9f4;" mat-raised-button (click)="addEmployee()">{{actionBtn}}</button>
 </div>

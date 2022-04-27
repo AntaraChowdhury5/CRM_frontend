@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EmployeeService } from 'src/app/Service/employee.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Employee } from 'src/app/DTO/employee';
 
 
 @Component({
@@ -11,8 +12,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./update-emp.component.scss']
 })
 export class UpdateEmpComponent implements OnInit {
-  public name: any;
-  public email: any;
+  public name: string = '';
+  public email: string = '';
   public department: any;
   public role: any;
   public form!: FormGroup;
@@ -40,7 +41,7 @@ export class UpdateEmpComponent implements OnInit {
   }
 
   public updateEmployee() {
-    let data={
+    let data:Employee={
          name:this.form.value.name,
          email:this.form.value.email,
          department:{dept_name:this.form.value.department},

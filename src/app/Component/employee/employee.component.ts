@@ -48,7 +48,6 @@ export class EmployeeComponent implements OnInit {
     });
   }
   public updateEmployee(row:any):void{
-    console.log(row);
     this.dialog.open(UpdateEmpComponent,{
       width:'30%',
       data:row

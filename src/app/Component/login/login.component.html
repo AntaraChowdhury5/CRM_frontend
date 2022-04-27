@@ -4,7 +4,7 @@
             <img src="../../../assets/bk1.jpg">
         </div>
         <div class="l-content">
-            <form [formGroup]="loginForm" class="l-form" (ngSubmit)="login()">
+            <form [formGroup]="loginForm" class="l-form">
                 <h2>Login</h2>
                 <div class="l-input">
                     <mat-label>E-mail</mat-label>
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="l-input" fxLayout="row" fxLayoutAlign="space-between center">
-                    <button class="l-sub" (click)="openDialog()">Submit</button>
+                    <button class="l-sub" (click)="login()">Submit</button>
                 </div>
 
             </form>
