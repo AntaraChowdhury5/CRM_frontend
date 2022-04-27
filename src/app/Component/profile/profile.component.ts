@@ -67,21 +67,5 @@ export class ProfileComponent implements OnInit {
 }
 
 
-/*
-getProfile() { 
-* openDialog(profileObjet:any): void {
-  const dialogRef = this.dialog.open(UpdateMyProfileComponent, {
-    data: profileObjet,width:'600px',height:'550px'
-  });
- 
-  dialogRef.afterClosed().subscribe(result => {
-    this.name = result;
-    this.dateOfBirth = result;
-    this.gender = result;
-    this.emailId = result;
-    this.mobileNumber = result;
-    this.interest = result;
-    this.location = result;
-  });
-} */
+
 
