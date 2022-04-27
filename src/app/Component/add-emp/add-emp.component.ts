@@ -37,7 +37,6 @@ export class AddEmpComponent implements OnInit {
   fileChoose(event: any) {
     if (event.target.files.length > 0) {
       this.form.image = event.target.files[0];
-      console.log(event.target.files[0])
     }
   }
 
@@ -51,9 +50,8 @@ export class AddEmpComponent implements OnInit {
     var role = this.form.role;
     var image = (this.form.image)
 
-    this.emp.addUser({ name: name, email: email, password: password, address:address,mobile:mobile,
+    this.emp.addEmployee({ name: name, email: email, password: password, address:address,mobile:mobile,
        department:{dept_name:department}, role: {role_name:role}, image: image }).subscribe((response: any) => {
-      console.log(response)
       this.snackbar.open('Employee Added Successfully !', '', {
         duration: 2000,
       });

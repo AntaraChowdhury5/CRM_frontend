@@ -26,7 +26,6 @@ export class EmployeeComponent implements OnInit {
   }
   public getAllEmp(){
     this.emp.getAllEmp().subscribe((response:any)=>{
-      console.log(response.data);
       this.dataSource=new MatTableDataSource(response.data);
       this.dataSource.paginator=this.paginator;
       this.dataSource.sort=this.sort;
@@ -59,7 +58,6 @@ export class EmployeeComponent implements OnInit {
     id:row._id
     }
      this.emp.deleteEmp(data).subscribe((response:any)=>{
-      console.log(response)
     }) 
   }
 

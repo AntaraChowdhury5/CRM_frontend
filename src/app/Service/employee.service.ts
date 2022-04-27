@@ -42,7 +42,7 @@ export class EmployeeService {
     return this.httpService.getService('/emps/'+reqData,true,header)
   }
   
-  addUser(empData:Employee){
+  addEmployee(empData:Employee){
     this.token = this.localStorageService.getItem('token');
     let header = {
       headers:new HttpHeaders({

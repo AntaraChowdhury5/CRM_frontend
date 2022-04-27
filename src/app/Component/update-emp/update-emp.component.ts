@@ -17,7 +17,7 @@ export class UpdateEmpComponent implements OnInit {
   public department: any;
   public role: any;
   public form!: FormGroup;
-  public roleList = ["Manager","Developer","Team Leader","QA","Senior QA"];
+  public roleList = ["Manager","Developer","Team Leader","QA"];
 
   constructor( private emp: EmployeeService, 
     private snackbar: MatSnackBar,
@@ -26,11 +26,12 @@ export class UpdateEmpComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editData: any,) { }
 
   ngOnInit(): void {
+    console.log(this.editData);
+    
     this.name = this.editData.name;
     this.email = this.editData.email;
-    this.department={dept_name:this.editData.department.dept_name};
-    this.role={role_name:this.editData.role.role_name}
-    console.log(this.editData);
+    this.department={dept_name:this.editData.dept};
+    this.role={role_name:this.editData.role}
 
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
@@ -48,7 +49,6 @@ export class UpdateEmpComponent implements OnInit {
          role:{role_name:this.form.value.role}
     }
     this.emp.updateEmployee(this.editData._id, data).subscribe((response: any) => {
-      console.log(response)
       this.snackbar.open('Employee Updated Successfully !', '', {
         duration: 2000,
       });

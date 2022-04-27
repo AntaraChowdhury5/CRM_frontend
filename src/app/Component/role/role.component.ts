@@ -25,7 +25,6 @@ export class RoleComponent implements OnInit {
 
   public getAllDept(){
     this.role.getAllRole().subscribe((response:any)=>{
-      console.log(response.data);
       this.dataSource=new MatTableDataSource(response.data);
       this.dataSource.paginator=this.paginator;
       this.dataSource.sort=this.sort;

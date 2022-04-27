@@ -37,19 +37,14 @@ export class LoginComponent implements OnInit {
       this.emp.login(login).subscribe((response: any) => {
         this.localStorageService.setItem('token', response.data.UserDetails.token);
         this.data.sendData(response);
-        console.log(response);
-
+        
         if (response.data.UserDetails.role == 'Admin') {
-          console.log("admin");
-
           this.dialog.open(AdminPopUpComponent, {
             width: '30%'
           });
         }
         else {
-          console.log("user");
-
-          this.dialog.open(PopUpComponent, {
+            this.dialog.open(PopUpComponent, {
             width: '30%'
           });
         }

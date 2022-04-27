@@ -24,13 +24,14 @@ export class ProfileComponent implements OnInit {
   public form!: FormGroup;
 
   constructor(private empService: EmployeeService, private localStorage: LocalStorageService,
-    public dialog: MatDialog, private data: DataService,public dialogRef: MatDialogRef<UpdateEmpComponent>,) { }
+    public dialog: MatDialog, private data: DataService) { }
     
   ngOnInit(): void {
     this.token = this.localStorage.getItem('token')
     this.data.recievedData.subscribe((res: any) => {
+     
       this.empService.getEmp(res.data.UserDetails.userId).subscribe((response: any) => {
-        console.log(response);
+        
         this.name = response.data.name;
         this.email = response.data.email;
         this.password = response.data.password;
@@ -44,9 +45,9 @@ export class ProfileComponent implements OnInit {
 
   updateEmployee(){
     this.data.recievedData.subscribe((res: any) => {
-        console.log(res);
         this.empService.getEmp(res.data.UserDetails.userId).subscribe((response: any) => {
           const re={
+            _id:res.data.UserDetails.userId,
           name : response.data.name,
           email :response.data.email,
           password : response.data.password,
@@ -58,8 +59,6 @@ export class ProfileComponent implements OnInit {
           this.dialog.open(UpdateEmpComponent,{
             width:'50%',
            data:re
-           //console.log();
-            
           });
         })
     })
